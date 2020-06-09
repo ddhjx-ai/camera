@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>人员管理</title>
+  <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../lib/bootstrap-validator/css/bootstrapValidator.min.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+  <!-- <div class="header">
+    <div class="header_left">
+      <ul>
+        
+      </ul>
+    </div>
+    <div class="header_right">
+      <span class="username"> <span class="currentName"></span><i class="fa fa-caret-down"></i> <ul>
+        <li data-toggle="modal" data-target="#changePassword">更改密码</li>
+        <li onclick="logout()">退出登录</li>
+      </ul> </span>
+      <span class="setDate"></span>
+      <span class="fa fa-times" title="退出" onclick="logout()"></span>
+    </div>
+  </div> -->
+  <div class="main">
+    <div class="operate">
+      <div>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#addUser">新增用户</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#addRole">新增角色</button>
+        <button class="btn btn-primary" onclick="showUserList()">用户列表</button>
+        <button class="btn btn-primary" onclick="showRoleList()">角色列表</button>
+      </div>
+      <div>
+        <input type="search" id="searchName" placeholder="请输入用户名/角色名"><i class="fa fa-search" onclick="searchByName()" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="user_list">
+      <div class="container-fluid">
+        <p >用户列表</p>
+        <div>
+          <table class="table table-bordered userList">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>用户名</th>
+                <th>状态</th>
+                <th>创建时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+        <nav>
+          <ul class="pagination">
+
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- 角色列表 -->
+    <div id="roleListModal">
+      <div class="container-fluid">
+        <p>角色列表</p>
+        <div>
+          <table class="table table-bordered rolesList">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>角色名</th>
+                <th>创建时间</th>
+                <th>备注</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+        <nav>
+          <ul class="pagination">
+
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- 新增用户模态框 -->
+  <div class="modal fade bs-example-modal-sm" id="addUser" tabindex="-1">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">新增用户</h4>
+        </div>
+        <div class="modal-body">
+          <form autocomplete="off" id="addUserForm">
+            <div class="form-group">
+              <label>用户名:</label>
+              <input type="text" class="form-control" placeholder="请输入用户名" name="username" id="addUserName">
+            </div>
+            <div class="form-group">
+              <label>角色:</label>
+              <select class="form-control roles" id="addRoleList" name='roleIdList'>
+              </select>
+            </div>
+            <div class="form-group groups">
+              <label>分组权限:</label>
+              <div class="addGroupsList">
+                <input type="checkbox"> 全选
+                <ul>
+
+                </ul>
+              </div>
+            </div>
+            <p class="addUserInfo">请必须勾选一项权限</p>
+            <div class="form-group">
+              <label>密码:</label>
+              <input type="password" class="form-control" placeholder="密码" name="password" id="addPassword">
+            </div>
+            <div class="form-group">
+              <label>密码确认:</label>
+              <input type="password" class="form-control" placeholder="确认密码" name="confirmPassword" id="confirmPassword">
+            </div>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-primary" value="添加" class="addUserSub">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="取消">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 新增角色模态框 -->
+  <div class="modal fade bs-example-modal-sm" id="addRole" tabindex="-1">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">新增角色</h4>
+        </div>
+        <div class="modal-body">
+          <form autocomplete="off" id="addRoleForm">
+            <div class="form-group">
+              <label>角色名:</label>
+              <input name="roleName" type="text" id="addRoleName" class="form-control" placeholder="请输入角色名">
+            </div>
+            <div class="form-group rolesChoose addRoles">
+              <div>
+                <label>菜单权限:</label>
+                <input type="checkbox" class="checkedAll">全选
+              </div>
+              <div class="addRoleChecked">
+                <!-- <input type="checkbox" name="role" class="checked" value='31'>设备管理
+                <input type="checkbox" name="role" class="checked" value='33'>实时视频
+                <input type="checkbox" name="role" class="checked" value='34'>视频回放
+                <input type="checkbox" name="role" class="checked" value='2'>用户管理
+                <input type="checkbox" name="role" class="checked" value='32'>网关接入 -->
+              </div>
+            </div>
+            <p class="addRoleInfo">请必须勾选一项权限</p>
+            <div class="form-group">
+              <label class="textareaLabel">备注:</label>
+              <!-- <input type="text" name="remark" class="form-control" placeholder="备注"> -->
+              <textarea class="form-control" id="addRemark" placeholder="备注" name="remark"></textarea>
+            </div>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-primary" value="添加">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="取消">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 编辑用户模态框 -->
+  <div class="modal fade bs-example-modal-sm" id="updateUser" tabindex="-1">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">更新用户</h4>
+        </div>
+        <div class="modal-body">
+          <form autocomplete="off" id="updateUserForm">
+            <input type="hidden" name="id" id="userId">
+            <!-- <input type="hidden" name="roleIdList" id="roleIdList"> -->
+            <div class="form-group">
+              <label>用户名:</label>
+              <input type="text" class="form-control" name="username" id="updateUserName">
+            </div>
+            <div class="form-group">
+              <label>角色:</label>
+              <select class="form-control roles" name="roleIdList" id="updateRoleList">
+                <!-- <option value="0">IP/域名</option> -->
+              </select>
+            </div>
+            <!-- <div class="form-group">
+              <label>密码:</label>
+              <input type="password" class="form-control" name="password" id="updatePassword">
+            </div> -->
+            <div class="form-group groups">
+              <label>分组权限:</label>
+              <div class="updateGroupsList">
+                <input type="checkbox"> 全选
+                <ul>
+
+                </ul>
+              </div>
+            </div>
+            <p class="updateUserInfo">请必须勾选一项权限</p>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-primary" value="确认">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="取消">
+            </div>
+          </form>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-primary">添加</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 编辑角色模态框 -->
+  <div class="modal fade bs-example-modal-sm" id="updateRole" tabindex="-1">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">编辑角色</h4>
+        </div>
+        <div class="modal-body">
+          <form autocomplete="off" id="updateRoleForm">
+            <input type="hidden" id="updateRoleId">
+            <div class="form-group">
+              <label>角色名:</label>
+              <input name="roleName" type="text" id="updateRoleName" class="form-control" placeholder="请输入角色名">
+            </div>
+            <div class="form-group rolesChoose updateRoles">
+              <div>
+                <label>菜单权限:</label>
+                <input type="checkbox" class="checkedAll">全选
+              </div>
+              <div class="updateRoleChecked">
+                <!-- <input type="checkbox" name="role" class="checked" value='31'>设备管理
+                <input type="checkbox" name="role" class="checked" value='33'>实时视频
+                <input type="checkbox" name="role" class="checked" value='34'>视频回放
+                <input type="checkbox" name="role" class="checked" value='2'>用户管理
+                <input type="checkbox" name="role" class="checked" value='32'>网关接入 -->
+              </div>
+            </div>
+            <p class="updateRoleInfo">请必须勾选一项权限</p>
+            <div class="form-group">
+              <label class="textareaLabel">备注:</label>
+              <!-- <input type="text" name="remark" class="form-control" placeholder="备注"> -->
+              <textarea class="form-control" id="updateRemark" placeholder="备注" name="remark"></textarea>
+            </div>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-primary" value="保存">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="取消">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 更改密码模态框 -->
+  <!-- <div class="modal fade bs-example-modal-sm" id="changePassword" tabindex="-1">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">更改密码</h4>
+        </div>
+        <div class="modal-body">
+          <form autocomplete="off" id="changePasswordForm">
+            <div class="form-group">
+              <label>原密码:</label>
+              <input name="password" type="text" id="oldPassword" class="form-control" placeholder="请输入原始密码">
+            </div>
+            <div class="form-group">
+              <label>新密码:</label>
+              <input name="newPassword" type="password" id="newPassword" class="form-control" placeholder="请输入新密码">
+            </div>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-primary" value="保存">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="取消">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- 获取用户列表 -->
+  <script type="text/html" id="userList">
+    {{each list}}
+    <tr>
+      <td>{{$index + 1}}</td>
+      <td>{{$value.username}}</td>
+      <td>{{$value.status==1 ? '在线' : '停用'}}</td>
+      <td>{{$value.createTime}}</td>
+      <td>
+        <!-- <span>详情</span> -->
+        <span data-id='{{$value.userId}}' onclick='updateModal(this)'>编辑</span>
+        <span data-id='{{$value.userId}}' onclick='removeUser(this)'>删除</span>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+
+  <!-- 获取角色列表 -->
+  <script type="text/html" id="roleList">
+    {{if list.length != 0}}
+    {{ each list}}
+    <option value="{{$value.roleId}}">{{$value.roleName}}</option>
+    {{ /each }}
+    {{else}}
+    <option>暂无角色，添加后才可选择</option>
+    {{/if}}
+  </script>
+
+  <!-- 获取所有分组列表 -->
+  <script type="text/html" id="groupsList">
+    {{each list}}
+    <li><input type="checkbox" value="{{$value.id}}" name="group"/>{{$value.name}}</li>
+    {{/each}}
+  </script>
+
+  <!-- 分页方式获取角色列表 -->
+  <script type="text/html" id="getAllRoleList">
+    {{each list}}
+    <tr>
+      <td>{{$index + 1}}</td>
+      <td>{{$value.roleName}}</td>
+      <td>{{$value.createTime}}</td>
+      <td>{{$value.remark}}</td>
+      <td>
+        <!-- <span data-id='{{$value.roleId}}'>详情</span> -->
+        <span data-id='{{$value.roleId}}' onclick='updateRoleModal(this)'>编辑</span>
+        <span data-id='{{$value.roleId}}' onclick='removeRole(this)'>删除</span>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+
+  <!-- 导航栏模态框 -->
+  <script type="text/html" id="menuList">
+    <li><a href="./workDesk.html">工作台</a> </li>
+    {{each list}}
+      <li class="{{$value.name== '用户管理' ? 'active' : ''}}"><a href="./{{$value.url}}">{{$value.name}}</a></li>
+    {{/each}}
+  </script>
+
+  <!-- 角色权限模态框 -->
+  <script type="text/html" id="menuRoleList">
+    {{each list}}
+    <label>
+      <input type="checkbox" name="role" class="checked" value='{{$value.menuId}}'/>{{$value.name}}
+    </label>
+    {{/each}}
+  </script>
+  <script src="../lib/jquery1.10.2.js"></script>
+  <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+  <script src="../lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+  <script src="../lib/template.js"></script>
+  <script src="../js/baseUrl.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../lib/bootstrap-validator/css/bootstrapValidator.min.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/videoLive.css">
+  <title>实时视频</title>
+</head>
+
+<body>
+  <!-- <div class="header">
+    <div class="header_left">
+      <ul>
+      </ul>
+    </div>
+    <div class="header_right">
+      <span class="username"></span>
+      <span class="setDate"></span>
+      <span class="fa fa-times" title="退出" onclick="logout()"></span>
+    </div>
+  </div> -->
+  <div class="my_container">
+    <div class="container_left">
+      <div class="container_left_top">
+        <p>组织树</p>
+        <div class="search">
+          <input type="text" placeholder="搜索" id="searchName">
+          <span class="fa fa-search" onclick="searchByName()"></span>
+        </div>
+        <div class="groups">
+        </div>
+      </div>
+      <!-- 云台 -->
+      <div class="yuntai">
+        <p>云台</p>
+        <!-- <span><span class="fa fa-th-large"></span> <span class="mouse"></span></p> -->
+        <div class="operate">
+          <span></span><span class="click" onmousedown="mouseDownPTZControl(2);"
+            onmouseup="mouseUpPTZControl();"></span><span></span>
+          <span class="click" onmousedown="mouseDownPTZControl(3);"
+            onmouseup="mouseUpPTZControl();"></span><span></span><span class="click"
+            onmousedown="mouseDownPTZControl(4);" onmouseup="mouseUpPTZControl();"></span>
+          <span></span><span class="click" onmousedown="mouseDownPTZControl(1);"
+            onmouseup="mouseUpPTZControl();"></span><span></span>
+        </div>
+        <label>
+          步长
+          <input class="getSpeed" type="range" min="1" max="10" step="1" onchange="getSpeed(this)" value="3">
+        </label>
+        <div class="icons">
+          <span onmousedown="PTZZoomIn()" onmouseup="PTZZoomStop()">倍数+</span>
+          <span onmousedown="PTZFocusIn()" onmouseup="PTZFoucusStop()">变焦+</span>
+          <span onmousedown="PTZIrisIn()" onmouseup="PTZIrisStop()">光圈+</span>
+          <span onmousedown="PTZIrisIn()" onclick="clickStartRecord();">开始录屏</span>
+          <span onmousedown="PTZZoomout()" onmouseup="PTZZoomStop()">倍数-</span>
+          <span onmousedown="PTZFoucusOut()" onmouseup="PTZFoucusStop()">变焦-</span>
+          <span onmousedown="PTZIrisOut()" onmouseup="PTZIrisStop()">光圈-</span>
+          <span onmousedown="PTZIrisOut()" onclick="clickStopRecord();">停止录屏</span>
+        </div>
+      </div>
+    </div>
+    <div class="container_right">
+      <div id="divPlugin" class="plugin"></div>
+      <div class="player_icons">
+        <div class="icons_left">
+          <span class="fa fa-file-o" onclick="clickOpenFileDlg('recordPath', 0);" title="选择文件夹"></span>
+          <input id="recordPath" type="text" class="txt" style="font-size: 12px;"/>
+          <!-- <select>
+            <option value="15">15分钟</option>
+            <option value="30">30分钟</option>
+            <option value="45">45分钟</option>
+            <option value="60">60分钟</option>
+          </select> -->
+          <!-- <span class="fa fa-caret-down"></span> -->
+          <!-- <span class="fa fa-refresh" title="开始录屏" onclick="clickStartRecord();"></span> -->
+        </div>
+        <div class="icons_right">
+          <span class="fa fa-window-maximize" onclick="screenNum(1)"></span>
+          <span class="fa fa-th-large" onclick="screenNum(2)"></span>
+          <span class="fa fa-th" onclick="screenNum(3)"></span>
+          <span class="fa" onclick="screenNum(4)">16</span>
+          <span class="fa fa-arrows-alt " onclick="clickFullScreen()"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="messageBox">
+    
+  </div>
+  
+  <!-- 编辑分组 -->
+  <div id="editGroup">
+    <iframe style="position: absolute;opacity:0; z-index: 10; width: 100%; height: 100%; top: 0;left: 0;scrolling:no"
+      frameborder="0"></iframe>
+    <div class="modal-content" style="z-index: 100;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">编辑分组</h4>
+      </div>
+      <div class="modal-body">
+        <form autocomplete="off" id="editGroupForm">
+          <div class="form-group">
+            <label>名称</label>
+            <input type="text" name="name" class="form-control" id="groupsName">
+          </div>
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-primary" value="确认"/>
+            <input type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal()" value="取消"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/html" id='videoTitle'>
+    {{ each name }}
+    <p><span class="fa fa-caret-right"></span> <span class="fa fa-sitemap"></span> {{$value}} <span class="fa fa-trash-o" title="删除"></span>
+      <span class="fa fa-pencil-square-o" title="编辑"></span></p>
+    {{ /each }}
+  </script>
+
+  <script type="text/html" id="videoLists">
+    {{ each videos }}
+    <ul>
+      {{ each $value}}
+      <li data-id='{{$value.id}}' draggable="true" ondragstart="drag(event)" data-groupId="{{$value.groupId}}"><span class="fa {{$value.deviceStatus == 1 ? 'fa-check-circle-o' : 'fa-ban'}} "></span>{{ $value.name }}</li>
+      {{ /each }}
+    </ul>
+    {{ /each }}
+  </script>
+
+  <script type="text/html" id="menuList">
+    <li><a href="./workDesk.html">工作台</a> </li>
+    {{each list}}
+      <li class="{{$value.name== '实时视频' ? 'active' : ''}}"><a href="./{{$value.url}}">{{$value.name}}</a></li>
+    {{/each}}
+  </script>
+
+  <script src="../lib/jquery1.10.2.js"></script>
+  <!-- <script src="../lib/jquery-1.8.0.min.js"></script> -->
+  <script src="../lib/bootstrap/js/bootstrap.js"></script>
+  <script src="../lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+  <script src="../lib/template.js"></script>
+  <script src="../codebase/webVideoCtrl.js"></script>
+  <script src="../js/baseUrl.js"></script>
+  <script src="../js/videoLive.js"></script>
+</body>
+
+</html>

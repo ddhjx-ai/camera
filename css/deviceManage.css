@@ -1,0 +1,253 @@
+div.main {
+  padding: 0 10px;
+}
+
+div.main>.operate {
+  display: flex;
+  justify-content: space-between;
+  height: 45px;
+  padding: 0 30px 0 0px;
+}
+div.main>.operate>div button {
+  margin-right: 10px;
+}
+
+div.main>.operate>div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.main>.operate>div input {
+  border: 0;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #ddd;
+  height: 40px;
+  width: 180px;
+  text-indent: 10px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+div.main>.operate>div i {
+  display: inline-block;
+  height: 40px;
+  width: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  line-height: 40px;
+  text-align: center;
+  color: #eee;
+  font-size: 25px;
+  cursor: pointer;
+  background-color: #666;
+  margin-right: 30px;
+}
+
+div.main>.operate>div i:active {
+  background-color: #333;
+}
+
+div.main>.operate>div span {
+  margin-right: 20px;
+}
+
+div.main>p {
+  height: 30px;
+  line-height: 30px;
+  background-color: #000;
+  padding-left: 10px;
+}
+
+table {
+  table-layout: fixed;
+}
+
+.container-fluid>div {
+  height: 500px;
+}
+
+td,
+th {
+  text-align: center;
+}
+
+tr>td span,
+tr>th span {
+  display: inline-block;
+  width: 45%;
+  height: 100%;
+  text-align: center;
+}
+
+tr>td:last-child span {
+  color: #377ff4;
+  cursor: pointer;
+}
+
+.table-bordered,
+.table-bordered>tbody>tr>td,
+.table>thead:first-child>tr:first-child>th {
+  border-color: #666;
+}
+
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+  border-bottom-width: 1px;
+}
+
+.table>thead:first-child>tr:first-child>th {
+  background-color: #333;
+}
+
+.table-bordered>tbody>tr:nth-child(odd) {
+  background-color: #444;
+}
+select{
+  outline: none;
+  background:#000;
+}
+/* 覆盖bootstrap样式 */
+/* @media (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 200px auto;
+  }
+} */
+.modal-dialog.modal-md{
+  width: 400px;
+}
+label{
+  width: 60px;
+  color: #666;
+}
+.form-control{
+  display: inline-block;
+  width: 280px;
+  margin-left: 10px;
+}
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.pagination li{
+  cursor: pointer;
+}
+
+.has-feedback .form-control {
+  padding-right: 0;
+}
+
+.bv-form .help-block{
+  position: absolute;
+  margin: 0;
+  right: 30px;
+}
+
+/* 开关样式 */
+.toggle-switch input{
+  height: 24px;
+  width: 48px;
+  padding: 0;
+}
+
+.toggle-switch {
+  display: inline-block;
+  position: relative;
+  width: 48px;
+  height: 24px;
+  border-radius: 5px;
+}
+.toggle-switch input[type="checkbox"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.toggle-switch input[type="checkbox"]:checked + .toggle-switch-content {
+  border: 1px #48a0df solid;
+}
+.toggle-switch input[type="checkbox"]:checked + .toggle-switch-content .switch-true {
+  display: block;
+}
+.toggle-switch input[type="checkbox"]:checked + .toggle-switch-content .switch-false {
+  background: #959A9D;
+  display: none;
+}
+.toggle-switch-content {
+  border: 1px #959A9D solid;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+.switch-true,
+.switch-false {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  padding-top: 3px;
+  color: #fff;
+}
+.switch-true {
+  float: left;
+  background: #48a0df;
+  display: none;
+}
+.switch-false {
+  float: right;
+  background: #959A9D;
+  display: block;
+} 
+
+.switch{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.switch select{
+  height: 24px;
+  width: 70px;
+  border: 0;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.switch > input{
+  width: calc(100% - 50px);
+  color: #000;
+  border: 2px;
+  height: 24px;
+  background-color: #ccc;
+}
+
+#addDevice .modal-footer,
+#editDevice .modal-footer{
+  position: relative;
+}
+
+#addDevice .infoMsg,
+#editDevice .infoMsg{
+  position: absolute;
+  color: #666;
+  display: none;
+}
+
+.infoMsg img{
+  width: 20px;
+  margin-left: 5px;
+  animation: rotate 1s infinite;
+}
+
+@keyframes rotate{
+  from {transform:rotate(0);}
+	to {transform:rotate(360deg);}
+}

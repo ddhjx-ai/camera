@@ -1,0 +1,119 @@
+.mian > .form-inline{
+  margin: 30px 0;
+}
+
+.mian > .form-inline > .form-group{
+  margin:0 50px 0 15px;
+}
+
+.mian > .form-inline > .form-group input{
+  height: 26px;
+  width: 200px;
+  padding: 0;
+  padding-left: 10px;
+  border: none;
+  border: 1px solid #ccc;
+  background-color: #000;
+}
+.mian > .form-inline >  button{
+  height: 26px;
+  padding: 0;
+  width: 60px;
+  margin-left: 50px;
+}
+.container-fluid>div {
+  height: 480px;
+}
+table{
+  table-layout: fixed;
+}
+th,td{
+  text-align: center;
+}
+tr>td span,
+tr>th span {
+  display: inline-block;
+  width: 30%;
+  height: 100%;
+  text-align: center;
+}
+
+tr>td:last-child span {
+  color: #377ff4;
+  cursor: pointer;
+}
+.container-fluid > button{
+  margin-bottom: 10px;
+}
+.table-bordered,
+.table-bordered>tbody>tr>td,
+.table>thead:first-child>tr:first-child>th {
+  border-color: #666;
+}
+
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+  border-bottom-width: 1px;
+}
+
+.table>thead:first-child>tr:first-child>th {
+  background-color: #333;
+}
+
+.table-bordered>tbody>tr:nth-child(odd) {
+  background-color: #444;
+}
+/* 覆盖bootstrap样式 */
+/* @media (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 200px auto;
+  }
+} */
+.form-group {
+  /* margin-bottom: 15px; */
+  /* display: flex;
+  justify-content: flex-end;
+  align-items: center; */
+  color: #666;
+}
+
+#updateGateway .modal-content,
+#addGateWay .modal-content{
+  width: 530px;
+}
+#updateGateway .form-group label,
+#addGateWay .form-group label{
+  font-weight: 100;
+  width: 135px;
+}
+#updateGateway .form-control,
+#addGateWay .form-control{
+  color: #666;
+  width: 330px;
+  padding-right: 0;
+}
+.form-control{
+  display: inline-block;
+  width: 400px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+/* 详情模态框 */
+#gateWayDetail{
+  color: #333;
+}
+
+#gateWayDetail .modal-body span{
+  display: inline-block;
+  height: 100%;
+  width: 150px;
+  /* text-align: right; */
+}
+
+.bv-form .help-block{
+  position: absolute;
+  margin: 0;
+  right: 35px;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../lib/bootstrap-validator/css/bootstrapValidator.min.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/mobileDevice.css">
+  <title>移动监控</title>
+</head>
+
+<body>
+  <!-- <div class="header">
+    <div class="header_left">
+      <ul>
+
+      </ul>
+    </div>
+    <div class="header_right">
+      <span class="username"></span>
+      <span class="setDate"></span>
+      <span class="fa fa-times" title="退出" onclick="logout()"></span>
+    </div>
+  </div> -->
+
+  <div class="my_container">
+    <div class="container_left">
+      <p>组织树</p>
+      <div class="search">
+        <input type="text" placeholder="搜索">
+        <span class="fa fa-search" onclick="searchByName()"></span>
+      </div>
+      <div class="groups">
+
+      </div>
+    </div>
+    <div class="container_right">
+      <div id="vlc-content">
+        <div class="content" >
+          <embed id="vlcObj0" bgcolor="#000" wmode='transparent' ondrop="drop(event)" ondragover="allowDrop(event)" data-index='0' name="abc" controls=false branding=false type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" />
+        </div>
+        <div class="content">
+          <embed id="vlcObj1" bgcolor="#000" wmode='transparent' ondrop="drop(event)" ondragover="allowDrop(event)" data-index='1' name="abc" controls=false branding=false type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" />
+        </div>
+        <div class="content">
+          <embed id="vlcObj2" bgcolor="#000" wmode='transparent' ondrop="drop(event)" ondragover="allowDrop(event)" data-index='2' name="abc" controls=false branding=false type="application/x-vlc-plugin" pluginspage="http://www.videolan.org"  />
+        </div>
+        <div class="content">
+          <embed id="vlcObj3" bgcolor="#000" wmode='transparent' ondrop="drop(event)" ondragover="allowDrop(event)" data-index='3' name="abc" controls=false branding=false type="application/x-vlc-plugin" pluginspage="http://www.videolan.org"  />
+        </div>
+      </div>
+      <div class="player_icons">
+        <!-- <div class="icons_left">
+          <span class="fa fa-file-o" onclick="clickOpenFileDlg('recordPath', 0);" title="选择文件夹"></span>
+          <input id="recordPath" type="text" class="txt" />
+        </div> -->
+        <div class="icons_right">
+          <span class="fa fa-window-maximize" onclick="screenNum(1)"></span>
+          <span class="fa fa-th-large" onclick="screenNum(2)"></span>
+          <span class="fa fa-th" onclick="screenNum(3)"></span>
+          <span class="fa" onclick="screenNum(4)">16</span>
+          <!-- <span class="fa fa-arrows-alt " onclick="clickFullScreen()"></span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 编辑分组 -->
+  <div id="editGroup">
+    <iframe style="position: absolute;opacity:0; z-index: 10; width: 100%; height: 100%; top: 0;left: 0;scrolling:no" frameborder="0"></iframe>
+    <div class="modal-content" style="z-index: 100;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">编辑分组</h4>
+      </div>
+      <div class="modal-body">
+        <form autocomplete="off">
+          <div class="form-group">
+            <label>名称</label>
+            <input type="text" class="form-control" oninput="checkGroupName()" id="groupsName">
+          </div>
+          <p class="editGroupInfo">分组名不能为空</p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="editGroupBtn" onclick="editGroups()">确认</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal()">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/html" id='videoTitle'>
+    {{ each name }}
+    <p><span class="fa fa-caret-right"></span> <span class="fa fa-sitemap"></span> {{$value}} <span
+        class="fa fa-trash-o" title="删除"></span>
+      <span class="fa fa-pencil-square-o" title="编辑"></span></p>
+    {{ /each }}
+  </script>
+
+  <script type="text/html" id="videoLists">
+    {{ each videos }}
+    <ul>
+      {{ each $value}}
+      <li data-id='{{$value.id}}' draggable="true" ondragstart="drag(event)" data-number="{{$value.number}}" data-groupId="{{$value.groupId}}"><span
+          class="fa fa-check-circle-o"></span>{{ $value.name }}</li>
+      {{ /each }}
+    </ul>
+    {{ /each }}
+  </script>
+
+  <script type="text/html" id="menuList">
+    <li><a href="./workDesk.html">工作台</a> </li>
+    {{each list}}
+    <li class="{{$value.name== '移动监控' ? 'active' : ''}}"><a href="./{{$value.url}}">{{$value.name}}</a></li>
+    {{/each}}
+  </script>
+
+  <script src="../lib/jquery-1.8.0.min.js"></script>
+  <script src="../lib/layui/layui.js"></script>
+  <script src="../lib/template.js"></script>
+  <script src="../js/baseUrl.js"></script>
+  <script src="../js/mobileDevice.js"></script>
+</body>
+
+</html>

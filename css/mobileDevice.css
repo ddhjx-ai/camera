@@ -1,0 +1,203 @@
+.my_container{
+  width: 100%;
+  /* height: calc(100% - 52px); */
+  height: 100%;
+  display: flex;
+  background-color: #2a2e33;
+}
+
+.container_left{
+  overflow: auto;
+  width: 280px;
+  height: 100%;
+  background-color: #2a2e33;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container_left>p{
+  height: 25px;
+  width: 100%;
+  display: flex;
+  padding: 0 10px;
+  line-height: 40px;
+}
+
+.container_left>.search{
+  height: 50px;
+  padding: 12px 0;
+  color: #ccc;
+  position: relative;
+}
+
+.container_left>.search input{
+  border: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  color: #ccc;
+  text-indent: 10px;
+}
+
+.container_right{
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+.container_left>.search span{
+  position: absolute;
+  z-index: 100;
+  right: 10px;
+  top: 14px;
+}
+
+.container_left > .groups{
+  line-height: 25px;
+  /* height: 1000px; */
+  flex: 1;
+  overflow-y: auto;
+}
+
+.container_right > .player_icons{
+  width: 100%;
+  height: 56px;
+  display: flex;
+  padding: 0 30px 0 15px;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.container_right .icons_right span{
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 3px;
+}
+
+.container_right .icons_right span:hover{
+  color: #fff;
+  background-color: #111;
+}
+
+.container_right .icons_right span:active{
+  background-color: #000;
+}
+.groups ul li:hover{
+  background-color: #666;
+}
+
+/* VLC控件样式 */
+#vlc-content{
+  width: 100%;
+  height: calc(100% - 56px);
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  position: relative;
+}
+
+#vlc-content>div{
+  width: 50%;
+  height: 50%;
+  border: 1px solid #aaa;
+  background-color: #000;
+}
+
+
+
+#vlc-content  embed{
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+.groups{
+  line-height: 25px;
+  /* height: 300px; */
+  flex: 1;
+  overflow-y: auto;
+}
+
+.groups  span.fa-caret-down{
+  color: #40c4ff;
+}
+
+.groups ul{
+  padding-left: 30px;
+  display: none;
+}
+
+.groups p{
+  cursor: pointer;
+}
+
+.groups p:hover{
+  background-color: #666;
+}
+
+.groups ul li.show{
+  background-color: #666;
+}
+
+.groups ul li{
+  cursor: pointer;
+}
+
+.groups ul li > .fa-check-circle-o{
+  color: green;
+}
+
+.groups p {
+  position: relative;
+}
+.groups p .fa-trash-o{
+  position: absolute;
+  top: 1px;
+  right: 30px;
+}
+
+.groups p .fa-pencil-square-o{
+  position: absolute;
+  top: 2px;
+  right: 5px;
+}
+
+.groups p .fa-trash-o:active,
+.groups p .fa-pencil-square-o:active{
+  background-color: #000;
+  border-radius: 3px;
+}
+
+#editGroup{
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.modal-content{
+  width: 400px;
+  height: 240px;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.editGroupInfo{
+  display: none;
+  position: absolute;
+  bottom: 0px;
+  right: 25px;
+  color: #a94442;
+  font-size: 12px;
+}

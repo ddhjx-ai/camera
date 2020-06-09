@@ -1,0 +1,63 @@
+.main{
+  width: 100%;
+  height: calc(100% - 52px);
+  display: flex;
+  background-color: #2a2e33;
+}
+
+.main iframe{
+  width: 100%;
+  height: 100%;
+}
+
+/* span.username{
+  display: inline-block;
+  height: 100%;
+  width: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+span.username i{
+  margin-left: 5px;
+}
+span.username ul{
+  display: none;
+  position: absolute;
+  z-index: 100;
+  height: 80px;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  bottom: -50px;
+  background-color: #888;
+  text-align: center;
+}
+span.username ul li{
+  height: 40px;
+  line-height:40px;
+  width: 100%;
+  float: left;
+  background-color: #888;
+  list-style: none;
+}
+span.username:hover{
+  background-color: #333;
+}
+span.username:hover ul{
+  display: block;
+  list-style: none;
+  color: #fff;
+  background-color: #333;
+}
+span.username:hover .fa-caret-down{
+  opacity: 1;
+}
+.fa-caret-down{
+  opacity: 0;
+} */
+
+
+

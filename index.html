@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script src="./lib/jquery1.10.2.js"></script>
+  <script src="./js/baseUrl.js"></script>
+  <script>
+    var token = window.localStorage.getItem('token')
+    if(token){
+      $http_get({url:"/sys/menu/nav"},function(res){
+        if(res.code === 0){
+          window.location.href = './view/workDesk.html'
+        }
+      })
+    }else{
+      window.location.href = './view/login.html'
+    }
+  </script>
+</body>
+</html>

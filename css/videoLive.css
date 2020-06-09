@@ -1,0 +1,316 @@
+
+.my_container{
+  width: 100%;
+  /* height: calc(100% - 52px); */
+  height: 100%;
+  display: flex;
+  background-color: #2a2e33;
+}
+.container_left{
+  /* --------------谷歌------------------- */
+  overflow: auto;
+  width: 280px;
+  height: 100%;
+  background-color: #2a2e33;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container_left>div.container_left_top{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.container_left>div.container_left_top>p{
+  height: 40px;
+  width: 100%;
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+  background-color: #3a3e43;
+  justify-content: space-between;
+  color: #fff;
+}
+.container_left>div.container_left_top>.search{
+  height: 25px;
+  /* padding: 12px 0; */
+  color: #ccc;
+  position: relative;
+}
+.container_left>div.container_left_top>.search input{
+  border: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  color: #ccc;
+  text-indent: 10px;
+}
+.container_left>div.container_left_top>.search span{
+  position: absolute;
+  z-index: 100;
+  right: 10px;
+  top: 2px;
+}
+.container_left >div.container_left_top> .groups{
+  line-height: 25px;
+  /* height: 300px; */
+  flex: 1;
+  overflow-y: auto;
+}
+.container_left >div.container_left_top> .groups  span.fa-caret-down{
+  color: #40c4ff;
+}
+.container_left >div.container_left_top> .groups ul{
+  padding-left: 30px;
+  display: none;
+}
+.container_left >div.container_left_top> .groups p,
+.container_left >div.container_left_top> .groups ul li{
+  cursor: pointer;
+} 
+.container_left >div.container_left_top> .groups p:hover,
+.container_left >div.container_left_top> .groups ul li:hover{
+  background-color: #666;
+}
+.container_left >div.container_left_top> .groups ul li.show{
+  background-color: #666;
+}
+.container_left >div.container_left_top> .groups ul li > .fa-check-circle-o{
+  color: green;
+}
+.container_left > .yuntai{
+  height: 330px;
+}
+.container_left > .yuntai > p{
+  height: 40px;
+  padding: 0 15px;
+  background-color: #3a3e43;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container_left > .yuntai > .operate{
+  width: 115px;
+  height: 115px;
+  margin: 12px auto;
+  background: url(../images/operate.png);
+  display: flex;
+  flex-wrap: wrap;
+}
+.container_left > .yuntai > .operate span{
+  width: 33.33%;
+  height: 33.33%;
+  cursor: pointer;
+}
+.container_left > .yuntai > label{
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-around;
+  margin: 15px 0;
+}
+.container_left > .yuntai > label input{
+  width: 150px;
+}
+.container_left > .yuntai > .icons{
+  padding: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.yuntai .icons span{
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 3px;
+  width: 23%;
+  height: 25px;
+  line-height: 22px;
+  margin: 0 2px 10px;
+  border: 2px solid rgba(205, 224, 230, 0.5);
+}
+.yuntai .icons span:hover{
+  color: #eee;
+}
+.yuntai .icons span:active{
+  color: #aaa;
+  border-color: #555;
+}
+.container_right{
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+.container_right > .player_icons{
+  width: 100%;
+  height: 56px;
+  display: flex;
+  padding: 0 30px 0 15px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.container_right > .player_icons > .icons_left{
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.container_right #recordPath{
+  height: 25px;
+  width: 200px;
+  color: #ccc;
+  border-radius: 5px;
+  border: 0;
+  outline: 0;
+  text-indent: 5px;
+  background-color: #000;
+}
+.container_right > .player_icons > .icons_left select{
+  width: 130px;
+  border-radius: 5px;
+  height: 25px;
+  border: 0;
+  background-color: #000;
+  color: #ccc;
+  margin: 0 10px;
+}
+.container_right > .player_icons > .icons_left .fa-caret-down{
+  position: absolute;
+  right: 40px;
+  top: 4px;
+  pointer-events: none;
+}
+select::-ms-expand { 
+  display: none; 
+}
+.plugin {
+  width: 100%;
+  height: calc(100% - 56px);
+}
+
+.icons_left span.fa-file-o,
+.icons_left span.fa-refresh,
+.container_right .icons_right span{
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 3px;
+}
+.icons_left span.fa-file-o:hover,
+.container_right .icons_right span:hover{
+  color: #fff;
+  background-color: #111;
+}
+.icons_left span.fa-file-o:active,
+.container_right .icons_right span:active{
+  background-color: #000;
+}
+
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 150px;
+  border-radius: 10px;
+  background-color: #000;
+}
+
+input[type=range]::-ms-track {
+  height: 10px;
+  border-radius: 10px;
+  background-color: #000;
+  /* box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; */
+  border-color: transparent; /*去除原有边框*/
+  color: transparent; /*去除轨道内的竖线*/
+}
+
+input[type=range]::-ms-thumb {
+  border: solid 2px rgba(205, 224, 230, 0.5);
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #3b4547;
+  cursor: pointer;
+}
+
+input[type=range]::-ms-fill-lower {
+  /*进度条已填充的部分*/
+  height: 14px;
+  border-radius: 14px;
+  background-color: #666;
+}
+
+input::-ms-clear, input::-ms-reveal{
+  display: none;
+}
+
+.messageBox{
+  position: absolute;
+  top: 5px;
+  z-index: 1000;
+  left: 50%;
+  transform: translate(-50%);
+  width: 220px;
+  height: 40px;
+  background-color: #ccc;
+  color: #333;
+  border-radius: 10px;
+  font-size: 26px;
+  text-align: center;
+  line-height: 40px;
+  display: none;
+}
+
+#editGroup{
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.modal-content{
+  width: 400px;
+  height: 240px;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.groups ul{
+  display: none;
+}
+
+.groups p {
+  position: relative;
+}
+.groups p .fa-trash-o{
+  position: absolute;
+  top: 1px;
+  right: 30px;
+}
+
+.groups p .fa-pencil-square-o{
+  position: absolute;
+  top: 2px;
+  right: 5px;
+}
+
+.groups p .fa-trash-o:active,
+.groups p .fa-pencil-square-o:active{
+  background-color: #000;
+  border-radius: 3px;
+}
+
+span.fa-ban{
+  color: rgba(255,0,0,0.4);
+}
+
+.bv-form .help-block{
+  position: absolute;
+  margin: 0;
+  right: 20px;
+}

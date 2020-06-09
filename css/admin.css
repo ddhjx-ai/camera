@@ -1,0 +1,285 @@
+div.main>.operate {
+  display: flex;
+  justify-content: space-between;
+  height: 45px;
+  padding: 0 20px;
+}
+div.main>.operate>div button {
+  margin-right: 10px;
+}
+
+div.main>.operate>div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.main>.operate>div input {
+  border: 0;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #ddd;
+  height: 40px;
+  width: 180px;
+  text-indent: 10px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+div.main>.operate>div i {
+  display: inline-block;
+  height: 40px;
+  width: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  line-height: 40px;
+  text-align: center;
+  color: #eee;
+  font-size: 25px;
+  cursor: pointer;
+  background-color: #666;
+}
+
+div.main>.operate>div i:active {
+  background-color: #333;
+}
+
+div.main>.operate>div span {
+  margin-right: 20px;
+}
+
+table{
+  table-layout: fixed;
+}
+th,td{
+  text-align: center;
+}
+.container-fluid > button{
+  margin-bottom: 10px;
+}
+tr>th span {
+  display: inline-block;
+  width: 45%;
+  height: 100%;
+  text-align: center;
+}
+
+tr>td:last-child span {
+  color: #377ff4;
+  cursor: pointer;
+  display: inline-block;
+  width: 50px;
+}
+
+.table-bordered,
+.table-bordered>tbody>tr>td,
+.table>thead:first-child>tr:first-child>th {
+  border-color: #666;
+}
+
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+  border-bottom-width: 1px;
+}
+
+.table>thead:first-child>tr:first-child>th {
+  background-color: #333;
+}
+
+.table-bordered>tbody>tr:nth-child(odd) {
+  background-color: #444;
+}
+td,
+th {
+  text-align: center;
+}
+.rolesChoose{
+  color: #888;
+  display: flex;
+  flex-wrap: wrap;
+}
+.rolesChoose div{
+  width:100%;
+}
+.rolesChoose div:last-of-type{
+  margin-left: 74px;
+}
+.modal-dialog.modal-md{
+  width: 450px;
+}
+.updateRoleChecked label,
+.addRoleChecked label{
+  width: auto;
+  font-weight: 100;
+  color: #999;
+}
+/* 覆盖bootstrap样式 */
+/* @media (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 200px auto;
+  }
+} */
+.form-control{
+  display: inline-block;
+  width: 330px;
+  /* margin-left: 10px; */
+}
+label{
+  color: #666;
+  width: 70px;
+}
+.updateGroupsList,
+.addGroupsList{
+  float: right;
+  width: 342px;
+}
+.updateGroupsList ul li,
+.addGroupsList ul li{
+  float: left;
+  margin-right: 10px;
+}
+
+.form-group.groups{
+  overflow: hidden;
+}
+
+.textareaLabel{
+  position: relative;
+  top: -40px;
+}
+textarea{
+  resize: none;
+}
+
+/* 角色列表 */
+#roleListModal{
+  display: none;
+  position: absolute;
+  width: 100%;
+  /* top: 97px; */
+  top: 45px;
+  bottom: 0;
+  /* background-color: #3a3e43; */
+}
+#roleListModal .container-fluid{
+  /* position: absolute; */
+  top: 100px;
+  bottom: 0;
+  width: 100%;  
+  background-color: #3a3e43;
+}
+.container-fluid>p{
+  height: 40px;
+  line-height: 40px;
+  background-color: #000;
+  color: #eee;
+  font-weight: 700;
+  text-indent: 6px;
+}
+
+.bv-form .help-block{
+  position: absolute;
+  margin: 0;
+  right: 30px;
+}
+
+.addRoles .bv-form .help-block{
+  bottom: 0px;
+}
+
+.has-feedback label~.form-control-feedback{
+  display: none !important;
+}
+
+.groups{
+  position: relative;
+}
+.addUserInfo{
+  display: none;
+  position: absolute;
+  bottom: 176px;
+  z-index: 10;
+  right: 25px;
+  color: #a94442;
+  font-size: 12px;
+}
+.addRoleInfo{
+  display: none;
+  position: absolute;
+  bottom: 160px;
+  z-index: 10;
+  right: 25px;
+  color: #a94442;
+  font-size: 12px;
+}
+.updateUserInfo{
+  display: none;
+  position: absolute;
+  bottom: 78px;
+  z-index: 10;
+  right: 25px;
+  color: #a94442;
+  font-size: 12px;
+}
+.updateRoleInfo{
+  display: none;
+  position: absolute;
+  bottom: 162px;
+  z-index: 10;
+  right: 25px;
+  color: #a94442;
+  font-size: 12px;
+}
+
+span.username{
+  display: inline-block;
+  height: 100%;
+  width: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+span.username i{
+  margin-left: 5px;
+}
+span.username ul{
+  display: none;
+  position: absolute;
+  z-index: 10;
+  height: 80px;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  bottom: -50px;
+  background-color: #888;
+  text-align: center;
+}
+span.username ul li{
+  height: 40px;
+  line-height:40px;
+  width: 100%;
+  float: left;
+  background-color: #888;
+  list-style: none;
+}
+span.username:hover{
+  background-color: #333;
+}
+span.username:hover ul{
+  display: block;
+  list-style: none;
+  /* color: #fff;
+  background-color: #333; */
+}
+span.username:hover .fa-caret-down{
+  opacity: 1;
+}
+i.fa-caret-down{
+  opacity: 0;
+}

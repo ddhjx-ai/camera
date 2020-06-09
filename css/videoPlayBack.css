@@ -1,0 +1,361 @@
+.my_container{
+  width: 100%;
+  /* height: calc(100% - 52px); */
+  height: 100%;
+  display: flex;
+  background-color: #2a2e33;
+}
+.container_left{
+  /* --------------谷歌------------------- */
+  overflow: auto;
+  width: 280px;
+  height: 100%;
+  background-color: #2a2e33;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container_left>div.container_left_top{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.container_left>div.container_left_top>.device{
+  height: 40px;
+  width: 100%;
+  background-color: #3a3e43;
+}
+.container_left>div.container_left_top>.device>p{
+  height: 40px;
+}
+.container_left>div.container_left_top>.device>p.active{
+  display: block;
+}
+.container_left>div.container_left_top>.device>p:nth-of-type(1)>span{
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  line-height: 40px;
+  background-color: #1d1f23;
+  cursor: pointer;
+}
+.container_left>div.container_left_top>.device>p:nth-of-type(1)>span.active{
+  background-color: #3a3e43;
+}
+.container_left>div.container_left_top>.device>p.select{
+  padding: 0 10px;
+  height: 40px;
+  line-height: 40px;
+  display: none;
+}
+.container_left>div.container_left_top>.device>p.select>span{
+  margin-left: 160px;
+}
+.container_left>div.container_left_top>.device>p.active{
+  display: block;
+}
+.container_left>div.container_left_top>.search{
+  height: 50px;
+  padding: 12px 0;
+  color: #ccc;
+  position: relative;
+}
+.container_left>div.container_left_top>.search input{
+  border: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  color: #ccc;
+  text-indent: 10px;
+}
+.container_left>div.container_left_top>.search span{
+  position: absolute;
+  right: 10px;
+  top: 14px;
+}
+.container_left >div.container_left_top> .groups{
+  line-height: 25px;
+  /* height: 300px; */
+  flex: 1;
+  overflow-y: auto;
+}
+.container_left >div.container_left_top> .groups  span.fa-caret-down{
+  color: #40c4ff;
+}
+.container_left >div.container_left_top> .groups ul{
+  padding-left: 30px;
+  /* display: none; */
+}
+.container_left >div.container_left_top> .groups p,
+.container_left >div.container_left_top> .groups ul li{
+  user-select: none;
+  cursor: pointer;
+} 
+/* .container_left >div.container_left_top> .groups p:hover, */
+.container_left >div.container_left_top> .groups ul ul li:hover{
+  background-color: #666;
+}
+.container_left >div.container_left_top> .groups ul li.show{
+  background-color: #666;
+}
+.container_left >div.container_left_top> .groups ul li > .fa-check-circle-o{
+  color: green;
+}
+.container_left >div.container_left_top> .groups input{
+  vertical-align: middle;
+  border: 0;
+}
+.container_left .left_views{
+  background-color: #3a3e43;
+}
+.container_left .left_views > p{
+  height: 40px;
+  border-bottom: 1px solid #111;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container_left .left_views form .radios{
+  padding: 8px 50px;
+}
+.container_left .left_views form #picture{
+  margin-left: 70px;
+}
+.container_left .left_views form{
+  padding: 0 5px;
+}
+.container_left .left_views form>div{
+  position: relative;
+}
+.container_left .left_views form > div > select,
+.container_left .left_views form > div > input{
+  width: 100%;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+  background-color: #000;
+  color: #ccc;
+  height: 25px;
+  text-indent: 10px;
+  margin: 3px 0;
+}
+.container_left .left_views .video_group span{
+  position: absolute;
+  top: 22px;
+  right: 5px;
+}
+.container_left .left_views form .search_code input{
+  height: 30px;
+  background-color: #00b0ff;
+  color: #fff;
+  margin: 15px 0;
+  cursor: pointer;
+}
+.container_left .left_views form .time_type{
+  position: relative;
+}
+.container_left .left_views form .time_type i:nth-of-type(1){
+  position: absolute;
+  right: 10px;
+  top: 28px;
+}
+.container_left .left_views form .time_type i:nth-of-type(2){
+  position: absolute;
+  right: 10px;
+  top: 77px;
+}
+.container_right{
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+.container_right > .player_icons{
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 56px;
+  position: absolute;
+  font-size: 20px;
+  left: 0;
+  bottom: 0;
+}
+.container_right > .player_icons select{
+  vertical-align: middle;
+    width: 60px;
+    height: 22px;
+    line-height: 23px;
+    background-color: #ccc;
+    border: none;
+    color: #3a3e43;
+    outline: 0;
+    text-indent: 6px;
+}
+
+.icons_center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_right .icons_center span{
+  display: inline-block;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 3px;
+}
+.container_right .icons_center span:hover{
+  color: #fff;
+  background-color: #111;
+}
+.container_right .icons_center span:active{
+  background-color: #000;
+}
+
+select::-ms-expand { 
+  display: none; 
+}
+
+input::-ms-clear, input::-ms-reveal{
+  display: none;
+}
+
+#vlc-content {
+  width: 100%;
+  height: calc(100% - 56px);
+}
+
+#editGroup{
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.modal-content{
+  width: 400px;
+  height: 240px;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.groups ul{
+  display: none;
+}
+.groups p {
+  position: relative;
+}
+.groups p .fa-trash-o{
+  position: absolute;
+  top: 1px;
+  right: 30px;
+}
+
+.groups p .fa-pencil-square-o{
+  position: absolute;
+  top: 2px;
+  right: 5px;
+}
+
+.groups p .fa-trash-o:active,
+.groups p .fa-pencil-square-o:active{
+  background-color: #000;
+  border-radius: 3px;
+}
+
+/* 进度条 */
+.player_icons{
+  position: relative;
+}
+.timeLine{
+  position: absolute;
+  top: -2px;
+  left: 0;
+  height: 8px;
+  width: 100%;
+  /* background-color: #fff; */
+  background-color: #888;
+  border-radius: 2px;
+  /* cursor: pointer; */
+}
+.timeBar{
+  width: 0;
+  height: 100%;
+  border-radius: 2px;
+  background-color: #00b0ff;
+}
+
+.time_content{
+  position: absolute;
+  top: 10px;
+  height: 40px;
+  line-height: 40px;
+  left: 10px;
+  width: 200px;
+}
+
+.voice{
+  margin-left: 6px;
+  position: relative;
+  width: 100px;
+  height: 6px;
+  cursor: pointer;
+}
+
+.voice_auto{
+  margin-left: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  
+}
+
+.voice span{
+  position: absolute;
+  top: 0px;
+  height: 6px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.voice span.bottom_line{
+  width: 100%;
+  background-color: #fff;
+}
+
+.voice span.top_line{
+  background-color: #00b0ff;
+  width: 30px;
+}
+
+/* 缓冲图片 */
+.modal_img {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 56px);
+}
+.modal_img img{
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  animation: rotate 1s infinite;
+}
+
+@keyframes rotate{
+  from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}
